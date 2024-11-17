@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My First Mini App</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/telegram-web-app/7.0.0/telegram-web-app.min.js"></script>
+    <style>
+      body {
+        padding: 20px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Arial, sans-serif;
+      }
+      .welcome-message {
+        text-align: center;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="welcome-message">
+      <h1>Hello! This is my first Mini App</h1>
+      <p id="userInfo">Loading user info...</p>
+    </div>
+
+    <script>
+      // Initialize Telegram WebApp
+      const webapp = window.Telegram.WebApp;
+      webapp.ready();
+
+      // Display user info if available
+      if (webapp.initDataUnsafe?.user) {
+        const user = webapp.initDataUnsafe.user;
+        document.getElementById(
+          "userInfo"
+        ).textContent = `Welcome, ${user.first_name}!`;
+      }
+    </script>
+  </body>
+</html>
